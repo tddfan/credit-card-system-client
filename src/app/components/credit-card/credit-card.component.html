@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Add</h1>
+  <h1>Add New Card</h1>
   <form ngNativeValidate>
     <div class="form-group">
         <label for="name">Name</label>
@@ -15,4 +15,36 @@
     </div>
     <button type="submit" class="btn btn-success" (click)="onSubmit()">Submit</button>
   </form>
+
+
+  <div *ngIf="!validationResult.success">
+    <ul>
+      <li *ngFor="let message of validationResult.messages">
+        <div class="alert alert-warning">
+          {{message}}
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <h1>
+    Existing cards
+  </h1>
+
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Card Number</th>
+      <th>Balance</th>
+      <th>Limit</th>
+    </tr>
+
+    <tr *ngFor="let card of allCreditCards">
+      <td>{{card.name}}</td>
+      <td>{{card.cardNo}}</td>
+      <td></td>
+      <td>{{card.limit}}</td>
+    </tr>
+  </table>
+
 </div>
