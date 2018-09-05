@@ -13,19 +13,18 @@
         <label for="limit">Limit</label>
         <input type="text" class="form-control" id="limit"  [(ngModel)]="model.limit" [ngModelOptions]="{standalone: true}" required>
     </div>
+    <div *ngIf="!validationResult.success">
+
+      <ul>
+        <li *ngFor="let message of validationResult.messages">
+          <div class="alert alert-warning">
+            {{message}}
+          </div>
+        </li>
+      </ul>
+    </div>
     <button type="submit" class="btn btn-success" (click)="onSubmit()">Submit</button>
   </form>
-
-
-  <div *ngIf="!validationResult.success">
-    <ul>
-      <li *ngFor="let message of validationResult.messages">
-        <div class="alert alert-warning">
-          {{message}}
-        </div>
-      </li>
-    </ul>
-  </div>
 
   <h1>
     Existing cards
@@ -42,9 +41,8 @@
     <tr *ngFor="let card of allCreditCards">
       <td>{{card.name}}</td>
       <td>{{card.cardNo}}</td>
-      <td></td>
+      <td>{{card.balance}}</td>
       <td>{{card.limit}}</td>
     </tr>
   </table>
-
 </div>
